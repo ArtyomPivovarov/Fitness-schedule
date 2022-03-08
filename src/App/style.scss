@@ -1,0 +1,222 @@
+@import "../assets/scss/vars";
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 15px;
+
+    @media #{$mMd} {
+        font-size: 13px;
+    }
+}
+
+body {
+    margin: 0;
+    -webkit-tap-highlight-color: rgba($cRed, .1);
+}
+
+.app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100Vh;
+    padding: 0 2vw 2vh;
+    background-color: white;
+    color: $cDarkGrey;
+
+    &--dark {
+        background-color: $cDarkGrey;
+        color: white;
+
+        .app__filter {
+            background-color: $cDarkGrey;
+        }
+
+        .app__item {
+            background-color: $cGrey;
+        }
+
+        .app__item-date,
+        .app__item-paid {
+            color: white;
+            padding: .1em .5em;
+            border-radius: 2em;
+            background-color: $cRed;
+        }
+    }
+
+    &__filter {
+        position: sticky;
+        top: 0;
+        z-index: 11;
+        display: flex;
+        width: 100%;
+        padding: 2vh 0;
+        background-color: white;
+
+        @media #{$mSm} {
+            position: static;
+            flex-direction: column;
+        }
+
+        .app__filter-item {
+            width: 25%;
+
+            @media #{$mSm} {
+                width: 100%;
+            }
+
+            &:not(:last-child) {
+                margin-right: 2%;
+
+                @media #{$mSm} {
+                    margin: 0 0 .6rem;
+                }
+            }
+        }
+    }
+
+    &__schedule {
+        width: 100%;
+        border-collapse: collapse;
+
+        @media #{$mSm} {
+            display: none;
+        }
+
+        th, td {
+            width: 12.5%;
+            padding: 1px;
+
+            &:first-child {
+                width: 5%;
+            }
+        }
+
+        th {
+            position: sticky;
+            z-index: 10;
+            top: calc(4vh + 40px);
+            padding: .3em;
+            background-color: rgba($cRed, 0.8);
+            color: white;
+            font-weight: normal;
+        }
+
+        td {
+            vertical-align: top;
+            padding: .5rem .15rem;
+            border-bottom: 2px solid rgba($cGrey, .3);
+        }
+    }
+
+    &__clock-icon {
+        display: block;
+        width: 1rem;
+        height: 1rem;
+        margin: 0 auto;
+        vertical-align: center;
+    }
+
+    td.app__time {
+        vertical-align: middle;
+        text-align: center;
+        padding: .3rem;
+    }
+
+    &__item {
+        position: relative;
+        padding: .5rem;
+        background-color: rgb(242, 241, 237);
+        overflow-wrap: anywhere;
+        border-radius: .5rem;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: border-color .3s;
+
+        @media #{$mSm} {
+            padding: .8rem;
+            margin-bottom: .6rem;
+            text-align: center;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: .3rem;
+
+            @media #{$mSm} {
+                margin-bottom: 0;
+            }
+        }
+
+        &:hover {
+            border-color: $cRed;
+        }
+
+        &--paid {
+            .app__item-title {
+                margin-right: 2.3rem;
+
+                @media #{$mSm} {
+                    margin: 0 2rem;
+                }
+            }
+        }
+
+        &-title {
+            margin: 0 0 .5rem;
+            font-size: 1rem;
+        }
+
+        &-subtitle {
+            margin-bottom: .5rem;
+            font-weight: bolder;
+            font-size: .9rem;
+        }
+
+        &-text {
+            font-size: .9rem;
+
+            &:not(:last-child) {
+                margin-bottom: .4rem;
+            }
+        }
+
+        &-date {
+            display: none;
+            margin: 0 auto 1rem;
+            font-size: .9rem;
+            width: max-content;
+            color: $cRed;
+
+            @media #{$mSm} {
+                display: block;
+            }
+        }
+
+        &-paid {
+            position: absolute;
+            right: .5rem;
+            top: .3rem;
+            color: rgba($cRed, .6);
+
+            @media #{$mSm} {
+                right: .8rem;
+                top: .8rem;
+            }
+        }
+    }
+
+    &__empty {
+        width: 100%;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: .6rem;;
+    }
+}

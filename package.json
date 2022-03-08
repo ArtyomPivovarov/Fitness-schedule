@@ -2,16 +2,21 @@
   "name": "fitness-schedule",
   "version": "0.1.0",
   "private": true,
+  "homepage":"./",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "vk-miniapps-deploy"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+    "@vkontakte/vk-bridge": "^2.5.3",
+    "core-js": "^3.21.1",
+    "vue": "^3.0.0",
+    "vue-multiselect": "^3.0.0-alpha.2"
   },
   "devDependencies": {
+    "@vkontakte/vk-miniapps-deploy": "0.0.25",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
